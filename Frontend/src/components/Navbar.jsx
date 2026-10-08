@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleLanguage = () => {
-    const nextLang = i18n.language === 'id' ? 'en' : 'id';
+    const nextLang = i18n.language === 'en' ? 'id' : 'en';
     i18n.changeLanguage(nextLang);
   };
 
@@ -22,36 +23,36 @@ const Navbar = () => {
         
         {/* Logo Section */}
         <div className="flex items-center">
-          <a href="#home" className="flex items-center gap-3 group">
+          <Link to="/" className="flex items-center gap-3 group">
             <img 
               src="/logo.jpeg" 
               alt="Rute Cemerlang Travel Logo" 
               className="h-12 md:h-14 w-auto object-contain rounded-lg filter drop-shadow-md group-hover:scale-105 transition-transform duration-300 bg-white/10 p-1" 
             />
-          </a>
+          </Link>
         </div>
 
         {/* Desktop Nav Links */}
         <ul className="hidden md:flex items-center gap-6 font-medium text-white text-base">
           <li>
-            <a href="#home" className="px-4 py-2 rounded-full hover:bg-white/10 transition-all">
+            <Link to="/" className="px-4 py-2 rounded-full hover:bg-white/10 transition-all">
               {t('nav.home')}
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#about" className="px-4 py-2 rounded-full hover:bg-white/10 transition-all">
+            <Link to="/about" className="px-4 py-2 rounded-full hover:bg-white/10 transition-all">
               {t('nav.about')}
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#services" className="px-4 py-2 rounded-full hover:bg-white/10 transition-all">
+            <Link to="/services" className="px-4 py-2 rounded-full hover:bg-white/10 transition-all">
               {t('nav.services')}
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#contact" className="px-4 py-2 rounded-full hover:bg-white/10 transition-all">
+            <Link to="/contact" className="px-4 py-2 rounded-full hover:bg-white/10 transition-all">
               {t('nav.contact')}
-            </a>
+            </Link>
           </li>
         </ul>
 
@@ -93,10 +94,10 @@ const Navbar = () => {
           exit={{ opacity: 0, height: 0 }}
           className="md:hidden bg-[#0A2540] border-t border-[#00A8B5] px-6 py-5 shadow-2xl space-y-3"
         >
-          <a href="#home" onClick={() => setIsOpen(false)} className="block py-2 text-white hover:text-[#00A8B5]">{t('nav.home')}</a>
-          <a href="#about" onClick={() => setIsOpen(false)} className="block py-2 text-white hover:text-[#00A8B5]">{t('nav.about')}</a>
-          <a href="#services" onClick={() => setIsOpen(false)} className="block py-2 text-white hover:text-[#00A8B5]">{t('nav.services')}</a>
-          <a href="#contact" onClick={() => setIsOpen(false)} className="block py-2 text-white hover:text-[#00A8B5]">{t('nav.contact')}</a>
+          <Link to="/" onClick={() => setIsOpen(false)} className="block py-2 text-white hover:text-[#00A8B5]">{t('nav.home')}</Link>
+          <Link to="/about" onClick={() => setIsOpen(false)} className="block py-2 text-white hover:text-[#00A8B5]">{t('nav.about')}</Link>
+          <Link to="/services" onClick={() => setIsOpen(false)} className="block py-2 text-white hover:text-[#00A8B5]">{t('nav.services')}</Link>
+          <Link to="/contact" onClick={() => setIsOpen(false)} className="block py-2 text-white hover:text-[#00A8B5]">{t('nav.contact')}</Link>
         </motion.div>
       )}
     </motion.nav>
